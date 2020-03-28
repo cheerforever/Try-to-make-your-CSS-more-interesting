@@ -109,7 +109,7 @@ a {
 }
 
 .rect {
-  width: 112rem;
+  width: 94%;
   background-color: var(--color-bg-rect);
   margin-top: 3rem;
   border-radius: 1rem;
@@ -172,6 +172,10 @@ section {
 
 .list-item_content p {
   margin: 0.5rem 0 0.5rem 0;
+}
+
+.list-item_content p code {
+  font-size: 1rem;
 }
 
 .list-item_content a {
