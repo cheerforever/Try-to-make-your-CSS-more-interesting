@@ -1,0 +1,103 @@
+<!--
+ * @Author: danni
+ * @Date: 2020-03-26 12:31:22
+ -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>One-sided shadows</title>
+    <style>
+        *,
+        *::after,
+        *::before {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 10px;
+        }
+
+        body {
+            font-size: 16px;
+        }
+
+        html,
+        body {
+            width: 100%;
+        }
+
+
+        main {
+            float: left;
+            height: 100%;
+            padding: 1rem;
+        }
+
+        section {
+            width: 100%;
+            height: calc(100% / 4);
+            padding-left: 1rem;
+            margin: 1rem;
+            text-align: center;
+        }
+
+        h1 {
+            height: 4rem;
+        }
+
+        blockquote {
+            height: calc(100% - 4rem);
+            display: flex;
+            justify-content: center;
+        }
+
+        div.rect {
+            width: 16rem;
+            height: 12rem;
+            background-color: #ffd54f;
+        }
+
+        .unilateral {
+            box-shadow: 0 0.5rem 0.4rem -0.4rem black;
+        }
+
+        .adjacent {
+            box-shadow: 0.5rem 0.5rem 0.4rem -0.4rem black;
+        }
+
+        .bilateral {
+            box-shadow: 0.5rem 0 0.5rem -0.5rem black,
+                -0.5rem 0 0.5rem -0.5rem black;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <section>
+            <h1>Shadow on one side</h1>
+            <blockquote>
+                <div class="rect unilateral"></div>
+            </blockquote>
+        </section>
+        <section>
+            <h1>Shadow on two adjacent sides</h1>
+            <blockquote>
+                <div class="rect adjacent"></div>
+            </blockquote>
+        </section>
+        <section>
+            <h1>Shadow on two opposite sides</h1>
+            <blockquote>
+                <div class="rect bilateral"></div>
+            </blockquote>
+        </section>
+    </main>
+</body>
+
+</html>

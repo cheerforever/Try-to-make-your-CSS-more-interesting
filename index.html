@@ -1,0 +1,95 @@
+<!--
+ * @Author: danni
+ * @Date: 2020-03-26 19:11:49
+ -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Candal|Six+Caps|Sunflower:300&display=swap" rel="stylesheet">
+    <link href="css/index.css" rel="stylesheet" type="text/css">
+    <title>Danni | Try to make your CSS more interesting</title>
+</head>
+
+<body>
+    <header class="flex-content">
+        <p id="title" class="shadow">Try to make your CSS more interesting</p>
+        <p id="subtitle">Summarize and demonstrate the CSS techniques involved in </br>《CSS Secrets: Better Solutions to
+            Everyday Web Design Problems》</p>
+    </header>
+    <main class="flex-content">
+        <article id="attention" class="rect">
+            <p class="rect-title">Attention</p>
+            <section>
+                <p>Be aware of browser compatibility issues when using the following styles. </br> You can use this link
+                    <a href="https://caniuse.com/" class="a_b">caniuse.com</a> to
+                    find out if your browser supports a feature.</p>
+            </section>
+        </article>
+        <article id="attention" class="rect">
+            <p class="rect-title">The Style List</p>
+            <section>
+                <p>Here's a list of interesting visuals, and you can click on the title to see more.</p>
+                <div class="list">
+                    <div class="list-item">
+                        <div class="list-item_title dark">
+                            <p class="list-item_title_text">One-sided shadows</p>
+                        </div>
+                        <div class="list-item_content dark">
+                            <section>
+                                <p>Shadow on one side:</p>
+                                <p class="list-item_content_p">
+                                    <code>box-shadow: 0 5px 4px -4px black;</code>
+                                </p>
+                                <p>Shadow on two adjacent sides:</p>
+                                <p class="list-item_content_p">
+                                    <code>box-shadow: 3px 3px 6px -3px black;</code>
+                                </p>
+                                <p>Shadow on two opposite sides:</p>
+                                <p class="list-item_content_p">
+                                    <code>box-shadow: 5px 0 5px -5px black,</br>
+                                        -5px 0 5px -5px black;
+                                    </code>
+                                </p>
+                            </section>
+                            <div class="preview hide">
+                                <img src="image/shadow_cover.PNG" alt="shadow">
+                            </div>
+                            <a href="html/unilateral_projection.html" class="a_s">click me</a>
+                        </div>
+                    </div>
+                    <div class="list-item">
+                        <div class="list-item_title light">
+                            <p class="list-item_title_text">Fronted glass effect</p>
+                        </div>
+                        <div class="list-item_content light">
+                            <section>
+                                <p>Our semi-tranparent white background makes the text hard to read.</p>
+                                <p>The solution: We will apply it to a pseudo-element that is positioned behind the
+                                    element and whose background seamlessly matches the one on &lt;body&gt;.
+                                </p>
+                            </section>
+                            <div class="preview hide">
+                                <img src="image/fronsted_cover.PNG" alt="shadow">
+                            </div>
+                            <a href="html/frosted-glass.html" class="a_s">click me</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </article>
+        <article id="attention" class="rect">
+            <p class="rect-title">About Me</p>
+            <section>
+                <p>I'm <a href="https://dannicheer.com/" class="a_b">Danni</a>, </br> This is my first attempt to
+                    design my own page layout. </br>If you're interested, you can follow me on <a
+                        href="https://github.com/cheerforever" class="a_b">github</a>.</p>
+            </section>
+        </article>
+    </main>
+    <script src="js/index.js"></script>
+</body>
+
+</html>
