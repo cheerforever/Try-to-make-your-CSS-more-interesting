@@ -6,8 +6,8 @@
   --color-shadow: #888;
   --color-font-subtitle: #999;
   --color-font-rect-title: #965454;
-  --color-font-high: #e69ecae3;
-  --color-bg-main: #e2ddd7;
+  --color-font-high: #ce8fb5e3;
+  --color-bg-main: #ddcedd;
   --color-bg-rect: #fffaf4;
   --color-bg-list-item_title_dark: #965454;
   --color-bg-list-item_title_light: #c28e8e;
@@ -46,7 +46,7 @@ body {
 }
 
 #title {
-  font-size: 16rem;
+  font-size: 17rem;
   font-family: var(--font-family-title);
   border-bottom: 0.1rem solid var(--color-font);
 }
@@ -56,9 +56,11 @@ body {
 }
 
 #subtitle {
-  width: 90vw;
-  margin: 2rem;
+  width: 88vw;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
   font-size: 2.5rem;
+
   font-family: var(--font-family);
   color: var(--color-font-subtitle);
   border-radius: 1rem;
