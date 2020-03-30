@@ -148,7 +148,7 @@ section {
 }
 
 .list-item {
-  width: 40rem;
+  width: 33.333333%;
   display: flex;
   flex-direction: column;
 }
@@ -208,12 +208,12 @@ section {
 
 .preview {
   background-color: var(--color-bg-rect);
-  width: 34rem;
-  height: 22rem;
+  width: 90%;
+  height: 75%;
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-18rem, -13rem);
+  transform: translate(-50%, -55%);
   border-radius: 1rem;
   padding: 1rem;
   display: flex;
