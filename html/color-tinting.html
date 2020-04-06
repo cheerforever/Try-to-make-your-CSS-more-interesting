@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color tinting</title>
+    <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900" rel="stylesheet">
+    <style>
+        *,
+        *::after,
+        *::before {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 10px;
+            width: 100%;
+            height: 100%;
+        }
+
+        body {
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 1.7;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            color: #570927d2;
+        }
+
+        .clear {
+            clear: both;
+        }
+
+        .area {
+            width: 100%;
+            padding: 1rem 3rem 1rem 3rem;
+        }
+
+        h1 {
+            float: left;
+        }
+
+        section {
+            text-indent: 1.5rem;
+        }
+
+        .content {
+            width: 100%;
+            background-color: #ad5b5b3a;
+            align-content: space-between;
+            border-radius: 1rem;
+            border: 0.3rem dashed #ad5b5b3a;
+            padding: 1rem;
+        }
+
+        .flex {
+            display: flex;
+        }
+
+        .left {
+            padding: 2rem;
+            border-radius: 1rem;
+            background-color: #ffffff;
+        }
+
+        .colum {
+            margin: 1rem;
+        }
+
+        .img-item {
+            height: 22rem;
+            text-align: center;
+        }
+
+        .basic {
+            padding: 0 1rem 0 1rem;
+        }
+
+        .sepia {
+            filter: sepia(1);
+        }
+
+        .sepia-saturate {
+            filter: sepia(1) saturate(4);
+        }
+
+        .sepia-saturate-hue-rotate {
+            filter: sepia(1) saturate(4) hue-rotate(295deg);
+        }
+
+        code {
+            display: block;
+            margin: 1rem 0 1rem 0;
+            border: 0.1rem dashed gray;
+            border-radius: 0.5rem;
+            padding: 0.4rem;
+            background-color: #ffffff;
+        }
+
+        .mix {
+            background: hsl(335, 100%, 50%);
+        }
+
+        .mix-blend-mode {
+            mix-blend-mode: luminosity;
+        }
+
+        ul {
+            padding-left: 2rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="area">
+        <h1>The problem</h1>
+        <div class="clear"></div>
+        <div class="content">
+            <section>Traditionally, we use an image editing application to create two versions of the image, and write
+                some simple CSS code to take care of swapping them. This approach works, but it adds bloat and extra
+                HTTP
+                requests, and is a maintenance nightmare.</section>
+            <section>Other approaches involve overlaying a semi-tranparent color on top of the image or applying opacity
+                to the image and overlaying it on a solid color. However, this is not a real tint: in addition to not
+                converting all the colors in the image to tints of the target color, it also reduces contrast
+                significantly.</section>
+            <section>There are also scripts that turn images into a &lt;canvas&gt; element and apply the tint through
+                JavaScript.This does produce proer tinting, but is fairly slow and restrictive.</section>
+        </div>
+    </div>
+    <div class="area">
+        <h1>Filter-based solution</h1>
+        <div class="clear"></div>
+        <div class="content flex">
+            <div class="left flex">
+                <div class="colum">
+                    <div class="img-item">
+                        <img src="../image/color_tinting.jpeg" alt="color tinting">
+                        <p>The original image</p>
+                    </div>
+                    <div class="img-item">
+                        <img src="../image/color_tinting.jpeg" alt="color tinting" class="sepia-saturate">
+                        <p>Image after adding a <strong>seturate()</strong> filter</p>
+                    </div>
+                </div>
+                <div class="colum">
+                    <div class="img-item">
+                        <img src="../image/color_tinting.jpeg" alt="color tinting" class="sepia">
+                        <p>Image after <strong>sepia()</strong> filter</p>
+                    </div>
+                    <div class="img-item">
+                        <img src="../image/color_tinting.jpeg" alt="color tinting" class="sepia-saturate-hue-rotate">
+                        <p>Image after adding a <strong>hue-rotate()</strong></br> filter as well</p>
+                    </div>
+                </div>
+            </div>
+            <div class="basic">
+                <section>
+                    The first filter we will apply is <strong>sepia()</strong>, which gives the image a
+                    <strong>desaturated
+                        orange-yellow tint</strong>.
+                </section>
+                <section>If our color is more saturated, we can use the <strong>saturate()</strong> filter
+                    to increase the saturation of every pixel.</section>
+                <section>As nice as our image now looks, we didn't want to colorize it with this orangish
+                    yellow, but with a deep, bright pink. Therefore, we also need to apply a
+                    <strong>hue-rotate()</strong> filter, to <strong>offset the hue of every pixel</strong> by the
+                    degrees we specify.</section>
+                <code>filter: sepia(1) saturate(4) hue-rotate(295deg);</code>
+            </div>
+        </div>
+    </div>
+    <div class="area">
+        <h1>Blending mode solution</h1>
+        <div class="clear"></div>
+        <div class="content flex">
+            <div class="left">
+                <div class="colum">
+                    <div class="img-item">
+                        <img src="../image/color_tinting.jpeg" alt="color tinting" class="sepia-saturate-hue-rotate">
+                    </div>
+                    <div class="img-item">
+                        <div class="mix">
+                            <img src="../image/color_tinting.jpeg" alt="color tinting" class="mix-blend-mode">
+                        </div>
+                        <p>Comparision of the filter method(top)</br>and the blending mode method(bottom)</p>
+                    </div>
+                </div>
+            </div>
+            <div class="basic">
+                <section>The filter solution works, but you might have noticed that the result is not exactly the same
+                    as what can be obtained with an image editor.</section>
+                <section>Even through we were trying to colorize with a very bright color, the result still looks rather
+                    <strong>washed out</strong>. If we try to increase the parameter in the <strong>saturate()</strong>
+                    filter, we start
+                    getting a <strong>different, overly stylized effect</strong>. Thankfully, there is a better way to
+                    approach this: <strong>blending modes!</strong></section>
+                <section>When two elements overlap, <strong>blending modes control how the colors of the topmost element
+                        blend with the colors of whatever is underneath it.</strong></section>
+                <section>To apply a blending mode to an element, there are two properties available to us:
+                    <strong>mix-blend-mode</strong> for applying blending modes to <strong>entire elements</strong> and
+                    <strong>background-blend-mode</strong> for applying blending modes to <strong>each background
+                        layer</strong> separately. This means that to use this method on an image we have two options,
+                    neither of them ideal:</section>
+                <ul>
+                    <li>
+                        <p>Wrapping our image in a container with a bafkground color of the color we want.
+                        </p>
+                        <code>
+                            &lt;div&gt;</br>
+                            &emsp;&emsp;&lt;img src="cat.jpg" alt="cat"/&gt;</br>
+                            &lt;/div&gt;
+                        </code>
+                        <code>
+                            div {</br>
+                            &emsp;&emsp;background: hsl(335, 100%, 50%);</br>
+                            }
+                            </br>
+                            img {</br>
+                            &emsp;&emsp;mix-blend-mode: luminosity;</br>
+                            }
+                        </code>
+                    </li>
+                    <li>
+                        <p>Using a &lt;div&gt; insted of an image, with its <strong>background-image</strong> set
+                            to the image we want to colorize and a second background layer underneath with our color.
+                        </p>
+                        <code>
+                            &lt;div&gt; class="tinted-image"</br>
+                            &emsp;&emsp;style="background-image:url(cat.jpg)"&gt;</br>
+                            &lt;/div&gt;
+                        </code>
+                        <code>
+                            .tined-image {</br>
+                            &emsp;&emsp;width: 284px;</br>
+                            &emsp;&emsp;height: 177px;</br>
+                            &emsp;&emsp;background-color: hsl(335, 100%, 50%);</br>
+                            &emsp;&emsp;transition: .5s background-color;</br>
+                            }
+                            </br>
+                            .tinted-image:hover {</br>
+                            &emsp;&emsp;background-color: transparent;</br>
+                            }
+                        </code>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
