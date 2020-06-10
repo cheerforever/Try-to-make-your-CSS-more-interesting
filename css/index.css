@@ -108,7 +108,7 @@ a {
 }
 
 .a_s:hover {
-  text-shadow: 0.2rem 0.3rem var(--color-shadow);
+  text-shadow: 0.2rem 0.2rem var(--color-shadow);
   transform: translateY(0.1rem);
 }
 
